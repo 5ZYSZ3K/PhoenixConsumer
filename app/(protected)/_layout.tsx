@@ -12,7 +12,14 @@ export default function ProtectedLayout() {
 	if (!access) return <Redirect href="/login" />;
 
 	return (
-		<View style={{ marginVertical: 80, marginHorizontal: 25, flex: 1 }}>
+		<View
+			style={{
+				marginVertical: 70,
+				marginHorizontal: 25,
+				marginTop: 30,
+				flex: 1,
+			}}
+		>
 			<Slot />
 		</View>
 	);
