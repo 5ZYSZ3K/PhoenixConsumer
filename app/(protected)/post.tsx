@@ -1,7 +1,7 @@
 import { Card, Text, Button } from "react-native-paper";
 
-interface postInterface {
-	id: number;
+export type postInterface = {
+	id: string;
 	title: string;
 	short_description: string;
 	description: string;
@@ -12,7 +12,7 @@ interface postInterface {
 	location: string;
 	price: number;
 	visible: boolean;
-}
+};
 export default function Post({
 	id,
 	title,

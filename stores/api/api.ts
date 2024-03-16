@@ -2,6 +2,7 @@ import { AxiosHeaders, AxiosResponse } from "axios";
 import { client } from "./client";
 import { CredentialsData, TokensData, UserData } from "../auth/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { postInterface } from "@/app/(protected)/post";
 
 class API {
 	async login(payload: CredentialsData): Promise<TokensData> {
@@ -54,6 +55,13 @@ class API {
 	async getUser(): Promise<UserData> {
 		const { data } = await this.request<UserData>({
 			url: "/auth/users/me/",
+			method: "GET",
+		});
+		return data;
+	}
+	async getPosts(): Promise<Array<postInterface>> {
+		const { data } = await this.request<Array<postInterface>>({
+			url: "/posts/",
 			method: "GET",
 		});
 		return data;

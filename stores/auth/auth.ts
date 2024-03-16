@@ -28,7 +28,7 @@ export const useAuth = create<AuthStore>((set) => ({
 				...tokens,
 				user: userData,
 			});
-			router.replace("/");
+			router.replace("/home");
 		} finally {
 			set({ loading: false });
 		}
@@ -59,7 +59,7 @@ export const useAuth = create<AuthStore>((set) => ({
 				restoreTokensLoading: false,
 				user: userData,
 			});
-			router.replace("/");
+			router.replace("/home");
 		} finally {
 			set({ loading: false });
 		}

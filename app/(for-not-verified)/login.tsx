@@ -32,6 +32,7 @@ export default function TabOneScreen() {
 	const onSubmit = async (credentials: CredentialsData) => {
 		try {
 			await login(credentials);
+			router.replace("/home");
 		} catch (err) {
 			console.error(err);
 		}
