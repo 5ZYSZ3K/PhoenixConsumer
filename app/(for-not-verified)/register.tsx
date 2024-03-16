@@ -3,7 +3,6 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 	View,
-	Text,
 	ScrollView,
 } from "react-native";
 import { router } from "expo-router";
@@ -14,6 +13,7 @@ import { useAuth } from "../../stores/auth/auth";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CenteredLayout from "../../components/CenteredLayout/CenteredLayout";
+import { Button, Text, useTheme } from "react-native-paper";
 
 const defaultValues = {
 	username: "",
@@ -41,6 +41,7 @@ const registerSchema = z
 	});
 
 export default function TabOneScreen() {
+	const theme = useTheme();
 	const { control, handleSubmit } = useForm({
 		defaultValues,
 		resolver: zodResolver(registerSchema),
@@ -68,12 +69,14 @@ export default function TabOneScreen() {
 					label="Nazwa użytkownika"
 					placeholder="anna11"
 					name="username"
+					iconName="account"
 				/>
 				<ControlledInput
 					control={control}
 					label="Podaj hasło"
 					placeholder="hasło"
 					name="password"
+					iconName="key"
 					secure
 				/>
 				<ControlledInput
@@ -81,6 +84,7 @@ export default function TabOneScreen() {
 					label="Powtórz hasło"
 					placeholder="hasło"
 					name="rePassword"
+					iconName="key"
 					secure
 				/>
 				<ControlledInput
@@ -88,44 +92,53 @@ export default function TabOneScreen() {
 					label="Numer telefonu"
 					placeholder="123123123"
 					name="phone_number"
+					iconName="phone"
 				/>
 				<ControlledInput
 					control={control}
 					label="Imię"
 					placeholder="Adam"
 					name="first_name"
+					iconName="account"
 				/>
 				<ControlledInput
 					control={control}
 					label="Nazwisko"
 					placeholder="Kowalski"
 					name="last_name"
+					iconName="account"
 				/>
 				<ControlledInput
 					control={control}
 					label="Email"
 					placeholder="adam@example.com"
 					name="email"
+					iconName="email"
 				/>
-				<View style={{ alignItems: "flex-end", rowGap: 16 }}>
-					<TouchableOpacity
-						style={{ marginLeft: 4 }}
-						onPress={() => router.push("/login")}
-					>
-						<Text style={{ color: "#10663F" }}>
-							Posiadam juz konto.
-							<Text style={{ fontWeight: "bold", color: "#10663F" }}>
-								{" Zaloguj się"}
-							</Text>
-						</Text>
-					</TouchableOpacity>
-					<TouchableOpacity
-						style={styles.button}
+				<View style={{ alignItems: "center", rowGap: 16 }}>
+					<Button
+						mode="contained-tonal"
+						labelStyle={{ fontSize: 20 }}
+						style={{ padding: 4 }}
 						onPress={handleSubmit(onSubmit)}
 					>
-						<Text style={styles.buttonText}>Gotowe</Text>
-					</TouchableOpacity>
+						Gotowe!
+					</Button>
 					{loading ? <ActivityIndicator /> : null}
+					<TouchableOpacity style={{}} onPress={() => router.push("/login")}>
+						<Text
+							variant="headlineSmall"
+							style={{ justifyContent: "flex-end" }}
+						>
+							Posiadasz konto?
+						</Text>
+						<Text
+							variant="headlineSmall"
+							style={{ fontWeight: "bold", color: theme.colors.primary }}
+						>
+							{"Zaloguj się"}
+						</Text>
+					</TouchableOpacity>
 				</View>
 			</CenteredLayout>
 		</ScrollView>
