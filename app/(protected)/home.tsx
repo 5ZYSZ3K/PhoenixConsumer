@@ -61,7 +61,7 @@ export default function TabOneScreen() {
 				keyExtractor={(item) => item.id}
 				extraData={data}
 			/>
-			<View style={styles.myButton}>
+			<View>
 				<MyButton />
 			</View>
 		</View>
@@ -76,9 +76,6 @@ const styles = StyleSheet.create({
 		padding: 20,
 	},
 	mainView: { flex: 1 },
-	myButton: {
-		display: "flex",
-	},
 	button: {
 		backgroundColor: "#15CA78",
 		color: "#fff",
