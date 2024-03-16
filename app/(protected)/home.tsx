@@ -102,30 +102,33 @@ export default function TabOneScreen() {
 					Mój Profil
 				</Text>
 				<IconButton
-					icon={szczala}
+					icon="arrow-left"
+					mode="contained"
 					size={60}
 					onPress={pressHandler}
-				></IconButton>
+				/>
 			</View>
 			<ScrollView>
-				{posts.map((item) => {
-					return (
-						<Post
-							id={item.id}
-							title={item.title}
-							short_description={item.short_description}
-							description={item.description}
-							issuer_id={item.issuer_id}
-							created_at={item.created_at}
-							start_timestamp={item.start_timestamp}
-							end_timestamp={item.end_timestamp}
-							location={item.location}
-							price={item.price}
-							visible={item.visible}
-						/>
-					);
-				})}
+				{posts.map((item) => (
+					<Post
+						key={item.id}
+						id={item.id}
+						title={item.title}
+						short_description={item.short_description}
+						description={item.description}
+						issuer_id={item.issuer_id}
+						created_at={item.created_at}
+						start_timestamp={item.start_timestamp}
+						end_timestamp={item.end_timestamp}
+						location={item.location}
+						price={item.price}
+						visible={item.visible}
+					/>
+				))}
 			</ScrollView>
+			<View>
+				<Text>FHFHFG</Text>
+			</View>
 		</View>
 	);
 }
