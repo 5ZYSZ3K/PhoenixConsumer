@@ -8,13 +8,14 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CenteredLayout from '../../components/CenteredLayout/CenteredLayout';
 
-const defaultValues = { username: '', password: '', rePassword: '' };
+const defaultValues = { username: '', password: '', rePassword: '', phone: '' };
 
 const registerSchema = z
     .object({
         username: z.string().min(1, 'Pole jest wymagane'),
         password: z.string().min(1, 'Pole jest wymagane'),
         rePassword: z.string().min(1, 'Pole jest wymagane'),
+        phone: z.string().min(1, 'Pole jest wymagane'),
     })
     .refine(({ password, rePassword }) => password === rePassword, {
         path: ['password'],
@@ -39,9 +40,10 @@ export default function TabOneScreen() {
 
     return (
         <CenteredLayout title="Zarejestruj się">
-            <ControlledInput control={control} label="Nazwa uzytkownika" placeholder="ania@adres.com" name="username" />
+            <ControlledInput control={control} label="Nazwa użytkownika" placeholder="ania@adres.com" name="username" />
             <ControlledInput control={control} label="Podaj hasło" placeholder="hasło" name="password" secure />
             <ControlledInput control={control} label="Powtórz hasło" placeholder="hasło" name="rePassword" secure />
+            <ControlledInput control={control} label="Numer telefonu" placeholder="123123123" name="phone" />
             <View style={{ alignItems: 'flex-end', rowGap: 16 }}>
                 <TouchableOpacity style={{ marginLeft: 4 }} onPress={() => router.push('/login')}>
                     <Text style={{ color: '#10663F' }}>
