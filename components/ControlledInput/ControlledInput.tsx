@@ -23,7 +23,9 @@ const ControlledInput = <T extends FieldValues>({
 				{label}
 			</Text>
 			<TextInput
-				left={iconName ? <TextInput.Icon icon={iconName} /> : null}
+				left={
+					iconName ? <TextInput.Icon icon={iconName} color="black" /> : null
+				}
 				mode="outlined"
 				placeholder={placeholder}
 				secureTextEntry={secure}

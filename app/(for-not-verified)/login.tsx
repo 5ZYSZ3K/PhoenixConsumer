@@ -38,33 +38,43 @@ export default function TabOneScreen() {
 	};
 
 	return (
-		<CenteredLayout title="Zaloguj się">
+		<CenteredLayout title="Zaloguj się!">
 			<ControlledInput
 				placeholder="ania@adres.com"
 				control={control}
 				label="Nazwa użytkownika"
 				name="username"
+				iconName="email"
 			/>
 			<ControlledInput
 				control={control}
 				label="Hasło"
+				iconName="key"
 				name="password"
 				placeholder="Podaj hasło"
 				secure
 			/>
 			<View style={{ alignItems: "center", rowGap: 16 }}>
+				<Button
+					mode="contained-tonal"
+					labelStyle={{ fontSize: 20 }}
+					style={{ padding: 4 }}
+					onPress={handleSubmit(onSubmit)}
+				>
+					Gotowe!
+				</Button>
+				{loading ? <ActivityIndicator /> : null}
 				<TouchableOpacity style={{}} onPress={() => router.push("/register")}>
 					<Text variant="headlineSmall" style={{ justifyContent: "flex-end" }}>
 						Nie posiadasz konta?
-						<Text style={{ fontWeight: "bold", color: theme.colors.secondary }}>
-							{" Zarejestruj się"}
-						</Text>
+					</Text>
+					<Text
+						variant="headlineSmall"
+						style={{ fontWeight: "bold", color: theme.colors.primary }}
+					>
+						{"Zarejestruj się"}
 					</Text>
 				</TouchableOpacity>
-				<Button mode="contained-tonal" onPress={handleSubmit(onSubmit)}>
-					Gotowe
-				</Button>
-				{loading ? <ActivityIndicator /> : null}
 			</View>
 		</CenteredLayout>
 	);

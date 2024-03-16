@@ -4,6 +4,7 @@ import {
 	TouchableOpacity,
 	View,
 	Text,
+	ScrollView,
 } from "react-native";
 import { router } from "expo-router";
 
@@ -53,79 +54,81 @@ export default function TabOneScreen() {
 		const { rePassword, ...rest } = credentials;
 		try {
 			await register(rest);
-			router.replace("/edit-user");
+			router.replace("/home");
 		} catch (err) {
 			console.error(JSON.stringify(err));
 		}
 	};
 
 	return (
-		<CenteredLayout title="Zarejestruj się">
-			<ControlledInput
-				control={control}
-				label="Nazwa użytkownika"
-				placeholder="anna11"
-				name="username"
-			/>
-			<ControlledInput
-				control={control}
-				label="Podaj hasło"
-				placeholder="hasło"
-				name="password"
-				secure
-			/>
-			<ControlledInput
-				control={control}
-				label="Powtórz hasło"
-				placeholder="hasło"
-				name="rePassword"
-				secure
-			/>
-			<ControlledInput
-				control={control}
-				label="Numer telefonu"
-				placeholder="123123123"
-				name="phone_number"
-			/>
-			<ControlledInput
-				control={control}
-				label="Imię"
-				placeholder="Adam"
-				name="first_name"
-			/>
-			<ControlledInput
-				control={control}
-				label="Nazwisko"
-				placeholder="Kowalski"
-				name="last_name"
-			/>
-			<ControlledInput
-				control={control}
-				label="Email"
-				placeholder="adam@example.com"
-				name="email"
-			/>
-			<View style={{ alignItems: "flex-end", rowGap: 16 }}>
-				<TouchableOpacity
-					style={{ marginLeft: 4 }}
-					onPress={() => router.push("/login")}
-				>
-					<Text style={{ color: "#10663F" }}>
-						Posiadam juz konto.
-						<Text style={{ fontWeight: "bold", color: "#10663F" }}>
-							{" Zaloguj się"}
+		<ScrollView>
+			<CenteredLayout title="Zarejestruj się">
+				<ControlledInput
+					control={control}
+					label="Nazwa użytkownika"
+					placeholder="anna11"
+					name="username"
+				/>
+				<ControlledInput
+					control={control}
+					label="Podaj hasło"
+					placeholder="hasło"
+					name="password"
+					secure
+				/>
+				<ControlledInput
+					control={control}
+					label="Powtórz hasło"
+					placeholder="hasło"
+					name="rePassword"
+					secure
+				/>
+				<ControlledInput
+					control={control}
+					label="Numer telefonu"
+					placeholder="123123123"
+					name="phone_number"
+				/>
+				<ControlledInput
+					control={control}
+					label="Imię"
+					placeholder="Adam"
+					name="first_name"
+				/>
+				<ControlledInput
+					control={control}
+					label="Nazwisko"
+					placeholder="Kowalski"
+					name="last_name"
+				/>
+				<ControlledInput
+					control={control}
+					label="Email"
+					placeholder="adam@example.com"
+					name="email"
+				/>
+				<View style={{ alignItems: "flex-end", rowGap: 16 }}>
+					<TouchableOpacity
+						style={{ marginLeft: 4 }}
+						onPress={() => router.push("/login")}
+					>
+						<Text style={{ color: "#10663F" }}>
+							Posiadam juz konto.
+							<Text style={{ fontWeight: "bold", color: "#10663F" }}>
+								{" Zaloguj się"}
+							</Text>
 						</Text>
-					</Text>
-				</TouchableOpacity>
-				<TouchableOpacity
-					style={styles.button}
-					onPress={handleSubmit(onSubmit)}
-				>
-					<Text style={styles.buttonText}>Gotowe</Text>
-				</TouchableOpacity>
-				{loading ? <ActivityIndicator /> : null}
-			</View>
-		</CenteredLayout>
+					</TouchableOpacity>
+					<TouchableOpacity
+						style={styles.button}
+						onPress={handleSubmit(onSubmit)}
+					>
+						<Text style={styles.buttonText}>Gotowe</Text>
+					</TouchableOpacity>
+					{loading ? <ActivityIndicator /> : null}
+				</View>
+			</CenteredLayout>
+		</ScrollView>
 	);
 }
 
