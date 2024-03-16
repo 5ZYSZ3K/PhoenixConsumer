@@ -27,13 +27,8 @@ export default function Post({
 	visible,
 }: postInterface) {
 	return (
-		<Card>
-			<Card.Title title={title} subtitle="Card Subtitle" />
-			<Card.Content>
-				<Text variant="titleLarge">Card title</Text>
-				<Text variant="bodyMedium">{short_description}</Text>
-			</Card.Content>
-			{/* <Card.Cover source={{ uri: "https://picsum.photos/700" }} /> */}
+		<Card mode="contained" style={{ marginVertical: 10 }}>
+			<Card.Title title={title} subtitle={short_description} />
 			<Card.Actions>
 				<Button>View</Button>
 				<Button>Ok</Button>

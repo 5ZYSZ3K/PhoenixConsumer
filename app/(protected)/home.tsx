@@ -55,14 +55,12 @@ export default function TabOneScreen() {
 					onPress={pressHandler}
 				/>
 			</View>
-			<ScrollView>
-				<FlatList
-					data={data}
-					renderItem={renderItem}
-					keyExtractor={(item) => item.id}
-					extraData={data}
-				/>
-			</ScrollView>
+			<FlatList
+				data={data}
+				renderItem={renderItem}
+				keyExtractor={(item) => item.id}
+				extraData={data}
+			/>
 			<View style={styles.myButton}>
 				<MyButton />
 			</View>
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
 	titleView: {
 		padding: 20,
 	},
-	mainView: {},
+	mainView: { flex: 1 },
 	myButton: {
 		display: "flex",
 	},
