@@ -1,12 +1,12 @@
 import API from "../api";
 
 export const verifyAccessToken = async (
-  access?: string | null
+	access?: string | null
 ): Promise<string | undefined> => {
-  if (!access) return;
+	if (!access) return;
 
-  try {
-    await API.verifyToken(access);
-    return access;
-  } catch {}
+	try {
+		await API.verifyToken(access);
+		return access;
+	} catch {}
 };

@@ -1,26 +1,38 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Surface, Text } from "react-native-paper";
+import { useTheme } from "react-native-paper";
 
-export default function CenteredLayout({ children, title }: { children: React.ReactNode, title: string }) {
-  return (<View style={styles.container}>
-  {/* Separator */}
-  <View style={{ width: 20, height: 100 }} />
-  <Text style={styles.title}>{title}</Text>
-   {children}
-</View>)
+export default function CenteredLayout({
+	children,
+	title,
+}: {
+	children: React.ReactNode;
+	title: string;
+}) {
+	const theme = useTheme();
+	return (
+		<View style={{ flex: 1 }}>
+			{/* Separator */}
+			<View style={{ width: 20, height: 100 }} />
+			<Surface
+				elevation={0}
+				style={{ width: "100%", padding: 8, alignItems: "center" }}
+			>
+				<Text variant="displaySmall" style={{ color: theme.colors.primary }}>
+					{title}
+				</Text>
+			</Surface>
+			<View style={styles.container}>{children}</View>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    rowGap: 16,
-    padding: 48,
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: "bold",
-    color: "#15CA78",
-    fontFamily: 'Roboto'
-  }
+	container: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "flex-start",
+		rowGap: 16,
+		padding: 48,
+	},
 });
