@@ -5,9 +5,9 @@ import { Redirect, Slot } from "expo-router";
  * Use it on protected screens
  */
 export default function ProtectedLayout() {
-  const [access] = useAuth((state) => [state.access]);
+	const [access] = useAuth((state) => [state.access]);
 
-  if (access) return <Redirect href="/" />;
+	if (access) return <Redirect href="/" />;
 
-  return <Slot />;
+	return <Slot />;
 }

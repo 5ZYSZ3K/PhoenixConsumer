@@ -7,21 +7,21 @@ import { StyleSheet, View } from "react-native";
  * Use it on protected screens
  */
 export default function ProtectedLayout() {
-  const [access] = useAuth((state) => [state.access]);
+	const [access] = useAuth((state) => [state.access]);
 
-  if (!access) return <Redirect href="/login" />;
+	if (!access) return <Redirect href="/login" />;
 
-  return (
-    <View style={{ marginVertical: 80, marginHorizontal: 25 }}>
-      <Slot />
-    </View>
-  );
+	return (
+		<View style={{ marginVertical: 80, marginHorizontal: 25 }}>
+			<Slot />
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+	container: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
 });
