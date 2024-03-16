@@ -3,6 +3,7 @@ import { IconButton, Text, useTheme } from "react-native-paper";
 import { useEffect, useState } from "react";
 import Post, { postInterface } from "./post";
 import api from "@/stores/api";
+import MyButton from "./creator/myButton";
 
 const renderItem = ({ item }: { item: postInterface }) => {
 	return (
@@ -62,8 +63,8 @@ export default function TabOneScreen() {
 					extraData={data}
 				/>
 			</ScrollView>
-			<View>
-				<Text>FHFHFG</Text>
+			<View style={styles.myButton}>
+				<MyButton />
 			</View>
 		</View>
 	);
@@ -77,6 +78,9 @@ const styles = StyleSheet.create({
 		padding: 20,
 	},
 	mainView: {},
+	myButton: {
+		display: "flex",
+	},
 	button: {
 		backgroundColor: "#15CA78",
 		color: "#fff",
