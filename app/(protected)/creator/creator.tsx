@@ -46,35 +46,49 @@ export default function eventCreator() {
 				/>
 			</View>
 			<ScrollView>
-				<ControlledInput //title, description, short_description, start_timestamp, end_timestamp, location ,price
-					control={control}
-					label="Title"
-					name="title"
-				/>
-				<ControlledInput
-					control={control}
-					label="description"
-					name="description"
-				/>
-				<ControlledInput
-					control={control}
-					label="short_description"
-					name="short_description"
-				/>
-				<ControlledInput
-					control={control}
-					label="start_timestamp"
-					placeholder="DD/MM/YYYY"
-					name="start_timestamp"
-				/>
-				<ControlledInput
-					control={control}
-					label="end_timestamp"
-					placeholder="DD/MM/YYYY"
-					name="end_timestamp"
-				/>
-				<ControlledInput control={control} label="location" name="location" />
-				<ControlledInput control={control} label="price" name="price" />
+				<View style={{ margin: 10 }}>
+					<ControlledInput //title, description, short_description, start_timestamp, end_timestamp, location ,price
+						control={control}
+						label="Tytuł"
+						name="title"
+					/>
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput control={control} label="Opis" name="description" />
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput
+						control={control}
+						label="Krótki opis"
+						name="short_description"
+					/>
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput
+						control={control}
+						label="Początek"
+						placeholder="DD/MM/YYYY"
+						name="start_timestamp"
+					/>
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput
+						control={control}
+						label="Koniec"
+						placeholder="DD/MM/YYYY"
+						name="end_timestamp"
+					/>
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput
+						control={control}
+						label="Lokalizacja"
+						name="location"
+					/>
+				</View>
+				<View style={{ margin: 10 }}>
+					<ControlledInput control={control} label="Cena" name="price" />
+				</View>
 			</ScrollView>
 		</View>
 	);
