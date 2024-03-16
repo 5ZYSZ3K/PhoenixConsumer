@@ -14,14 +14,25 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CenteredLayout from "../../components/CenteredLayout/CenteredLayout";
 
-const defaultValues = { username: "", password: "", rePassword: "", phone: "" };
+const defaultValues = {
+	username: "",
+	password: "",
+	rePassword: "",
+	phone_number: "",
+	email: "",
+	first_name: "",
+	last_name: "",
+};
 
 const registerSchema = z
 	.object({
 		username: z.string().min(1, "Pole jest wymagane"),
 		password: z.string().min(1, "Pole jest wymagane"),
 		rePassword: z.string().min(1, "Pole jest wymagane"),
-		phone: z.string().min(1, "Pole jest wymagane"),
+		phone_number: z.string().min(1, "Pole jest wymagane"),
+		email: z.string().min(1, "Pole jest wymagane"),
+		first_name: z.string().min(1, "Pole jest wymagane"),
+		last_name: z.string().min(1, "Pole jest wymagane"),
 	})
 	.refine(({ password, rePassword }) => password === rePassword, {
 		path: ["password"],
@@ -39,8 +50,9 @@ export default function TabOneScreen() {
 	]);
 
 	const onSubmit = async (credentials: typeof defaultValues) => {
+		const { rePassword, ...rest } = credentials;
 		try {
-			await register(credentials);
+			await register(rest);
 			router.replace("/edit-user");
 		} catch (err) {
 			console.error(JSON.stringify(err));
@@ -52,7 +64,7 @@ export default function TabOneScreen() {
 			<ControlledInput
 				control={control}
 				label="Nazwa użytkownika"
-				placeholder="ania@adres.com"
+				placeholder="anna11"
 				name="username"
 			/>
 			<ControlledInput
@@ -73,7 +85,25 @@ export default function TabOneScreen() {
 				control={control}
 				label="Numer telefonu"
 				placeholder="123123123"
-				name="phone"
+				name="phone_number"
+			/>
+			<ControlledInput
+				control={control}
+				label="Imię"
+				placeholder="Adam"
+				name="first_name"
+			/>
+			<ControlledInput
+				control={control}
+				label="Nazwisko"
+				placeholder="Kowalski"
+				name="last_name"
+			/>
+			<ControlledInput
+				control={control}
+				label="Email"
+				placeholder="adam@example.com"
+				name="email"
 			/>
 			<View style={{ alignItems: "flex-end", rowGap: 16 }}>
 				<TouchableOpacity

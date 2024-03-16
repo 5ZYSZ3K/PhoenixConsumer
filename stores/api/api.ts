@@ -74,7 +74,6 @@ class API {
 		disableToken?: boolean
 	): Promise<AxiosResponse<T>> {
 		const accessToken = await AsyncStorage.getItem("access");
-
 		return client.request({
 			url,
 			method,

@@ -2,15 +2,16 @@ import { FieldValues, useController } from "react-hook-form";
 import { ControlledInputProps } from "./types";
 import React, { ReactElement } from "react";
 import { View } from "react-native";
-import { TextInput, Text } from "react-native-paper";
+import { TextInput, Text, Icon } from "react-native-paper";
 
 const ControlledInput = <T extends FieldValues>({
 	name,
 	label,
 	control,
 	secure,
+	iconName,
 	placeholder = "Type...",
-}: ControlledInputProps<T>): ReactElement => {
+}: ControlledInputProps<T> & { iconName?: string }): ReactElement => {
 	const {
 		field: { value, onChange },
 		fieldState: { error },
@@ -22,6 +23,7 @@ const ControlledInput = <T extends FieldValues>({
 				{label}
 			</Text>
 			<TextInput
+				left={iconName ? <TextInput.Icon icon={iconName} /> : null}
 				mode="outlined"
 				placeholder={placeholder}
 				secureTextEntry={secure}
